@@ -21,16 +21,16 @@ const LoginSignUp = () => {
       <div className="inputs">
         { action === 'Signup' &&
         <div className="input">
-          <input type="text" className="name" placeholder='name'/>
+          <input type="text" className="name" placeholder='name' value={name} onChange={(e)=>{setName(e.target.value)}}/>
         </div>}
         <div className="input">
-          <input type="email" className="username" placeholder='email'/>
+          <input type="email" className="username" placeholder='email' value={username} onChange={(e)=>{setUsername(e.target.value) }}/>
         </div>
         <div className="input">
-          <input type="password" className="password" placeholder='password'/>
+          <input type="password" className="password" placeholder='password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
         </div>
       </div>
-      <button className="details-submit">submit</button>
+      <button className="details-submit" onClick={()=>{console.log("userdetails",name? {name,username,password}:username,password); setPassword(''); setUsername(''); setName('')}}>submit</button>
     </div>
   )
 }
