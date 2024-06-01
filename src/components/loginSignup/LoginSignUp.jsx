@@ -13,7 +13,8 @@ const LoginSignUp = () => {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    if(username.trim() === "" || password.trim() === "" || name.trim() === ""){
+    if(action==="Signup" ? username.trim() === "" || password.trim() === "" || name.trim() === "": username.trim() === "" || password.trim() === ""){
+
       alert("all fields are required")
     }else{
     if(action === "Signup"){
@@ -50,29 +51,38 @@ const LoginSignUp = () => {
     }
   }
 }
+
+
+
+const setAllToNull = ()=>{
+  setName('')
+  setUsername('')
+  setPassword('')
+}
   return (
     <div className="container">
       <div className="header">
         <div className="text">{action} page</div>
       </div>
       <div className="submit-container">
-      <button className={action === 'login'? 'submit-grey': 'submit'} onClick={()=>{setAction('Signup')}}>signup</button>
-      <button className={action === 'Signup'? 'submit-grey': 'submit'} onClick={()=>{setAction('login')}}>login</button>
+      <button className={action === 'login'? 'submit-grey': 'submit'} onClick={()=>{setAction('Signup'); setAllToNull()}}>signup</button>
+      <button className={action === 'Signup'? 'submit-grey': 'submit'} onClick={()=>{setAction('login'); setAllToNull()}}>login</button>
+
 
       </div>
       <div className="inputs">
         { action === 'Signup' &&
         <div className="input">
           <FaUserCircle />
-          <input type="text" required className="name" placeholder='name' value={name} onChange={(e)=>{setName(e.target.value)}}/>
+          <input type="text" className="name" placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}}/>
         </div>}
         <div className="input">
           <MdAlternateEmail />
-          <input type="email" className="username" placeholder='email' value={username} onChange={(e)=>{setUsername(e.target.value) }}/>
+          <input type="email" className="username" placeholder='Email' value={username} onChange={(e)=>{setUsername(e.target.value) }}/>
         </div>
         <div className="input">
           <TbPasswordFingerprint />
-          <input type="password" className="password" placeholder='password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+          <input type="password" className="password" placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
         </div>
       </div>
       <button className="details-submit" onClick={handleSubmit}>submit</button>

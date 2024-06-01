@@ -1,0 +1,84 @@
+header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgb(173, 168, 246);
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h3{
+    font-style: italic;
+    font-size: x-large;
+}
+.nav-menu{
+    background-color: aliceblue;
+    border-radius: 15px;
+    height: 25px;
+    margin-right: 2%
+}
+@media only screen and (max-width: 500px ) {
+    
+}
+header .nav-menu a{
+    margin: 0 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.nav-menu a:hover{
+color: rgb(0, 0, 0);
+text-decoration:underline ;}
+
+.Nav-close-btn{
+    display: none;
+}
+
+.Nav-menu-btn{
+    display: none;
+}
+
+@media only screen and (max-width: 500px ) {
+    .nav-menu{
+        display: none;
+    }
+    
+    .Nav-close-btn{
+        display: block;
+        background-color: none;
+    }
+    .Nav-menu-btn{
+        display: block;
+        margin-right: 20px;
+    }
+}
+
+
+.open-menudropdown{
+    position: absolute;
+    margin-top: 30px;
+    background-color: aliceblue;
+    border-radius: 15px;
+    display:flex;
+    flex-direction: column;
+    width: 150px;
+    gap: 20px;
+    text-align: center;
+    margin-right: 5px;
+    top: 13px;
+    right: 4%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.Nav-close-btn{
+    position: absolute;
+    right: 6%;
+    top: 10px;
+    z-index: 10px;
+}
+
+.Nav-No-menu-btn{
+    display: none;
+}
