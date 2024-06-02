@@ -1,13 +1,22 @@
 import React from 'react';
 import NavBar from '../NavBar';
+import './Ai.css'
+import { FaPlayCircle } from "react-icons/fa";
 
 const Ai = () => {
   return (
     <>
     <NavBar />
     <div>
+        <div className='Ai-container'>
 
-        <h1>this AI page</h1>
+          <div className="text">hello welcome to ai page</div>
+          <div className="input-container">
+
+          <input className='Ai-input' placeholder='send promt'></input>
+          <FaPlayCircle className='submit-promt-btn'/>
+          </div>
+        </div>
     </div>
     </>
   );
