@@ -4,6 +4,7 @@ import { TbPasswordFingerprint } from "react-icons/tb";
 import { FaUserCircle } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const LoginSignUp = () => {
   const navigate = useNavigate();
   const [action, setAction] = useState('welcome')
@@ -12,45 +13,22 @@ const LoginSignUp = () => {
   const [password, setPassword] = useState('')
 
   const handleSubmit = (e)=>{
-    e.preventDefault()
-    if(action==="Signup" ? username.trim() === "" || password.trim() === "" || name.trim() === "": username.trim() === "" || password.trim() === ""){
 
-      alert("all fields are required")
+    if(action === 'Signup'){
+      e.preventDefault()
+      axios.post('http://localhost:3001/signup', {name,username,password})
+      .then(result => {console.log(result)}, setAction('login'), setAllToNull())
     }else{
-    if(action === "Signup"){
-      const existingUsers = JSON.parse(localStorage.getItem("user")) || [];
-      const newUser = { name, username, password };
-      const existingUser = existingUsers.find(user => user.username === newUser.username);
-
-      if (existingUser) {
-        alert("User already exists. Please try with another username.");
-      } else {
-        existingUsers.push(newUser);
-        localStorage.setItem("user", JSON.stringify(existingUsers));
-        navigate('/home');
-      }
-    }
-    else
-    {
-      const storedUser = localStorage.getItem("user");
-      const users = JSON.parse(storedUser) || [];
-      
-      if (users.length > 0) {
-        const isUserValid = users.some((element) => {
-          return element.username === username && element.password === password;
-        });
-      
-        if (isUserValid) {
-          navigate("/home");
-        } else {
-          alert("Invalid Credentials");
-        }
-      } else {
-        alert("User Not Found");
-      }
+      e.preventDefault()
+      axios.post('http://localhost:3001/login', {username,password})
+      .then(result => {
+        console.log(result)
+         if(result.data === 'user existes'){
+          console.log('inside if')
+        navigate('/home')}
+      })
     }
   }
-}
 
 
 
@@ -70,6 +48,7 @@ const setAllToNull = ()=>{
 
 
       </div>
+      <form>
       <div className="inputs">
         { action === 'Signup' &&
         <div className="input">
@@ -86,6 +65,7 @@ const setAllToNull = ()=>{
         </div>
       </div>
       <button className="details-submit" onClick={handleSubmit}>submit</button>
+    </form>
     </div>
   )
 }
