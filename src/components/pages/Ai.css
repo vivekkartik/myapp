@@ -1,0 +1,41 @@
+.Ai-container{
+    display: flex;
+    background-color: aliceblue;
+    height: 85%;
+    left: 10%;
+    right: 1%;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 1%;
+    
+}
+
+.Ai-container .input-container{
+    justify-content:space-between ;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    right: 1%;
+    left: 15%;
+    position: absolute;
+    top: 93%;
+    align-items: baseline;
+    background-color: rgb(152, 105, 105);
+    border-radius: 15%;
+    align-items: center;
+}
+
+.submit-promt-btn{
+    border-radius: 30px;
+    right: 3%;
+    background-color: #dfdfdf;
+    font-size: xx-large;
+}
+
+.Ai-input{
+    padding-left: 50px;
+    right: 2%;
+    height: 30px;
+    text-decoration: none;
+    margin-left: 10px;
+}
